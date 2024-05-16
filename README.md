@@ -10,7 +10,7 @@ A main application of WGBoost in this work is a novel distributional estimate of
 The probabilitic forecast by WGBoost delivers enhanced predictive accuracy and demonstrates usefulness for out-of-distribution detection.
 This repository contains sources codes for the following paper:
 
-> Takuo Matsubara. Wasserstein Gradient Boosting: A General Framework with Applications to Posterior Regression. *arxiv*, 2024.
+> [Takuo Matsubara. Wasserstein Gradient Boosting: A General Framework with Applications to Posterior Regression. *arXiv:2405.09536*, 2024.](https://arxiv.org/abs/2405.09536)
 
 The files in this repository reproduce the experiments presented in the paper. Examples to run each code can be found in the 'script/' folder.
 
