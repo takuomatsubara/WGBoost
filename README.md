@@ -123,8 +123,8 @@ The experiments in the paper use nine UCI datasets for regression and two UCI da
 Some of the datasets are remotely loaded from a UCI public server and the rest are directly loaded from the files placed under the directory "data/uci/".
 The processed files of the *segment* and *sensorless* datasets were downloaded from https://github.com/sharpenb/Posterior-Network.
 Additionally, the experiments use the *bone mineral density* dataset in "The Elements of Statistical Learning (Springer New York, 2009) by Trevor Hastie, Robert Tibshirani, and Jerome Friedman" and the *old faithful geyser* dataset in "Applied Linear Regression (John Wiley & Sons, 1985) by Sanford Weisberg", each of which are located under the directory "data/cde/".
-The former can be downloaded from https://hastie.su.domains/ElemStatLearn/.
-The latter can be downloaded from https://www.stat.cmu.edu/~larry/all-of-statistics/.
+The former dataset were downloaded from https://hastie.su.domains/ElemStatLearn/.
+The latter dataset were downloaded from https://www.stat.cmu.edu/~larry/all-of-statistics/.
 
 
 
