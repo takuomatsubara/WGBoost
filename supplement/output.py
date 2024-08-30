@@ -20,7 +20,7 @@ import seaborn as sns
 import sys
 sys.path.insert(0, '../src')
 from fwgboost import FWGBoost
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.kernel_ridge import KernelRidge
 
 
 
@@ -32,7 +32,7 @@ def plot_output(X_test, P_test, filename, is_yon=False, scale=0.5):
     ax.set_xlim(-3.5, 3.5)
     ax.set_ylim(-2.4, 2.4)
     ax.set_xlabel(r"$x$", fontsize=20)
-    ylabel = r"$y$" if is_yon else " "
+    ylabel = r"$\theta$" if is_yon else " "
     ax.set_ylabel(ylabel, fontsize=20)
     ax.tick_params(axis='x', labelsize=18)
     ax.tick_params(axis='y', labelsize=18)
@@ -53,15 +53,15 @@ def main():
     torch.manual_seed(1)
     torch.set_num_threads(1)
     
-    X = np.linspace(-3.5, 3.5, 200).reshape(-1,1)
+    X = np.linspace(-3.5, 3.5, 10).reshape(-1,1)
     Z = np.sin(X)
 
     scale = 0.5
     grad_logp = lambda p, y: - (p - y) / scale**2
-    init_locs = np.linspace(-0.5, 0.5, 10).reshape(-1, 1)
+    init_locs = np.linspace(-0.4, 0.4, 10).reshape(-1, 1)
 
-    reg = FWGBoost(grad_logp, DecisionTreeRegressor,
-        learner_param = {'max_depth': 3, 'random_state': 1},
+    reg = FWGBoost(grad_logp, KernelRidge,
+        learner_param = {'kernel': 'rbf', 'alpha': 0.0, 'gamma': 0.25},
         learning_rate = 0.05,
         n_estimators = 100,
         n_particles = 10,

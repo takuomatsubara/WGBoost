@@ -4,13 +4,14 @@
 
 ## About
 
-Wasserstein Gradient Boosting (WGBoost) is a novel family of gradient boosting that returns a set of particles that approximate a target distribution assigned at each input-data point.
-In probabilistic forecasts, a parametric output-distribution is often specified on the space of output variables and a machine learning model returns a point estimate of the output-distribution parameter for each input.
-A main application of WGBoost in this work is a novel distributional estimate of the output-distribution parameter, which approximates the posterior distribution over the output-distribution determined pointwise at each data point.
+Wasserstein Gradient Boosting (WGBoost) is a novel family of gradient boosting.
+It solves distribution-valued supervised learning, where the output values of the training dataset are probability distributions for each input
+In classification and regression, a model typically returns, for each input, a point estimate of a parameter of a noise distribution specified for a response variable, such as the class probability parameter of a categorical distribution specified for a response label. 
+A main application of Wasserstein gradient boosting in this work is tree-based evidential learning, which returns a distributional estimate of the response parameter for each input. 
 The probabilitic forecast by WGBoost delivers enhanced predictive accuracy and demonstrates usefulness for out-of-distribution detection.
 This repository contains sources codes for the following paper:
 
-> [Takuo Matsubara. Wasserstein Gradient Boosting: A General Framework with Applications to Posterior Regression. *arXiv:2405.09536*, 2024.](https://arxiv.org/abs/2405.09536)
+> Takuo Matsubara. Wasserstein Gradient Boosting: A Framework for Distribution-Valued Supervised Learning. *arxiv*, 2024.
 
 The files in this repository reproduce the experiments presented in the paper. Examples to run each code can be found in the 'script/' folder.
 
@@ -34,7 +35,7 @@ The source code uses Python (version 3.11.7) and the following Python libralies:
 
 ## Example Usage
 
-The following is an example usage of our default algorithm SKA-WGBoost (shortly SWGBoost for the class name).
+The following is an example usage of our default WGBoost algorithm (SWGBoost for the class name).
 We place the 'src/swgboost.py' file in the same directory as the example code or add a path to the file.
 
 ```python
@@ -123,8 +124,8 @@ The experiments in the paper use nine UCI datasets for regression and two UCI da
 Some of the datasets are remotely loaded from a UCI public server and the rest are directly loaded from the files placed under the directory "data/uci/".
 The processed files of the *segment* and *sensorless* datasets were downloaded from https://github.com/sharpenb/Posterior-Network.
 Additionally, the experiments use the *bone mineral density* dataset in "The Elements of Statistical Learning (Springer New York, 2009) by Trevor Hastie, Robert Tibshirani, and Jerome Friedman" and the *old faithful geyser* dataset in "Applied Linear Regression (John Wiley & Sons, 1985) by Sanford Weisberg", each of which are located under the directory "data/cde/".
-The former dataset were downloaded from https://hastie.su.domains/ElemStatLearn/.
-The latter dataset were downloaded from https://www.stat.cmu.edu/~larry/all-of-statistics/.
+The former can be downloaded from https://hastie.su.domains/ElemStatLearn/.
+The latter can be downloaded from https://www.stat.cmu.edu/~larry/all-of-statistics/.
 
 
 

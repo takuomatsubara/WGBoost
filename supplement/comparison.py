@@ -51,7 +51,7 @@ def plot_result(results_T, results_S, offset=1):
     sns.lineplot(x=np.log10(np.arange(offset,args.max_estimators+1)), y=np.log10(results_T[2,offset-1:]), linewidth=2, ax=ax)
     sns.lineplot(x=np.log10(np.arange(offset,args.max_estimators+1)), y=np.log10(results_T[3,offset-1:]), linewidth=2, ax=ax)
     
-    ax.set_xlabel(r"common-log base learner number", fontsize=18)
+    ax.set_xlabel(r"common-log weak learner number", fontsize=18)
     ax.set_ylabel(r"common-log computation time", fontsize=18)
     ax.tick_params(axis='x', labelsize=16)
     ax.tick_params(axis='y', labelsize=16)
@@ -61,12 +61,12 @@ def plot_result(results_T, results_S, offset=1):
 
     fig, ax = plt.subplots(1, 1, figsize=(8,5))
     
-    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[0,offset-1:], linewidth=2, ax=ax, label="FKA-WGBoost")
-    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[1,offset-1:], linewidth=2, ax=ax, label="SKA-WGBoost")
-    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[2,offset-1:], linewidth=2, ax=ax, label="NKA-WGBoost")
+    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[0,offset-1:], linewidth=2, ax=ax, label="First-order WEvidential")
+    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[1,offset-1:], linewidth=2, ax=ax, label="Default WEvidential")
+    sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[2,offset-1:], linewidth=2, ax=ax, label="Full-Newton WEvidential")
     sns.lineplot(x=np.arange(offset,args.max_estimators+1), y=results_S[3,offset-1:], linewidth=2, ax=ax, label="LGBoost")
     
-    ax.set_xlabel(r"base learner number", fontsize=18)
+    ax.set_xlabel(r"weak learner number", fontsize=18)
     ax.set_ylabel(r"maximum mean discrepancy", fontsize=18)
     ax.tick_params(axis='x', labelsize=16)
     ax.tick_params(axis='y', labelsize=16)
@@ -101,7 +101,7 @@ def plot_output(X_test, P_test, filename, scale=0.5):
     ax.set_xlim(-3.5, 3.5)
     ax.set_ylim(-2.7, 2.7)
     ax.set_xlabel(r"$x$", fontsize=14)
-    ax.set_ylabel(r"$y$", fontsize=14)
+    ax.set_ylabel(r"$\theta$", fontsize=14)
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
 
@@ -191,9 +191,9 @@ def main(args):
 
     results_T = np.zeros((4, args.max_estimators))
     results_S = np.zeros((4, args.max_estimators))
-    results_T[0], results_S[0] = get_result(get_fwgboost(args.max_estimators), X, Z, "FKA-WGBoost")
-    results_T[1], results_S[1] = get_result(get_swgboost(args.max_estimators), X, Z, "SKA-WGBoost")
-    results_T[2], results_S[2] = get_result(get_nwgboost(args.max_estimators), X, Z, "NKA-WGBoost")
+    results_T[0], results_S[0] = get_result(get_fwgboost(args.max_estimators), X, Z, "F-WEvidential")
+    results_T[1], results_S[1] = get_result(get_swgboost(args.max_estimators), X, Z, "D-WEvidential")
+    results_T[2], results_S[2] = get_result(get_nwgboost(args.max_estimators), X, Z, "N-WEvidential")
     results_T[3], results_S[3] = get_result(get_lgboost(args.max_estimators), X, Z, "LGBoost")
     plot_result(results_T, results_S, offset=args.offset)
 
