@@ -46,7 +46,7 @@ from swgboost import SWGBoost
 
 X = np.linspace(-3.5, 3.5, 200).reshape(-1,1)                   # input data
 Y = np.sin(X)                                                   
-D = scipy.stats.norm(loc=Y.flatten(), scale=0.5)                # target distributions N( p | m=y_i, s=0.5 ) conditional on each y_i in Y = sin(X)
+D = scipy.stats.norm(loc=Y.flatten(), scale=0.5)                # output distributions N( p | m=y_i, s=0.5 ) conditional on each y_i from Y = sin(X)
 
 grad_logp = lambda p, y: - (p - y) / 0.5**2                     # define the log gradient of the target distribution N( p | m=y, s=0.5 ) at a location p conditional on a value y
 hess_logp = lambda p, y: - torch.ones(1) / 0.5**2               # define the log hessian diagonal of the target distribution N( p | m=y, s=0.5 ) at a location p conditional on a value y
