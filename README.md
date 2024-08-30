@@ -1,4 +1,4 @@
-# Wasserstein Gradient Boosting: A Framework for Distribution-Valued Supervised Learningn
+# Wasserstein Gradient Boosting: A Framework for Distribution-Valued Supervised Learning
 
 
 
