@@ -1,4 +1,4 @@
-# Wasserstein Gradient Boosting: A General Framework with Applications to Posterior Regression
+# Wasserstein Gradient Boosting: A Framework for Distribution-Valued Supervised Learningn
 
 
 
